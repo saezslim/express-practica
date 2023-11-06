@@ -1,0 +1,21 @@
+const express = require('express')
+const app = express()
+const port = 3000
+
+
+app.use('/hola-mundo', (req, res, next) => {
+  console.log('Está entrando a /hola-mundo')
+  next()
+})
+app.use('/chao-mundo', (req, res, next) => {
+  console.log('Está entrando a /chao-mundo')
+  next()
+})
+app.get('/', (req, res) => res.send(`¡Hola, mundo!`))
+app.get('/chao-mundo', (req, res) => res.send(`¡Chao, mundo!`))
+app.get('/hola-mundo', (req, res) => res.send(`¡Hola, mundo desde /hola-mundo!`))
+
+app.listen(port, () => {
+  console.log(`Escuchando en el puerto http://localhost:${port}`)
+})
+
